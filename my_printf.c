@@ -4,13 +4,13 @@ void print_buffer(char buffer[], int *buff_ind);
 
 /**
  * _printf - Printf function
- * @format: format
+ * @format: argument
  * Return: chars
  */
 int _printf(const char *format, ...)
 {
-	int flags, width, precision, size, buff_ind = 0;
 	int i, display = 0, print1 = 0;
+	int flags, width, precision, size, buff_ind = 0;
 	va_list list;
 	char buffer[BUFF_SIZE];
 
@@ -36,7 +36,7 @@ int _printf(const char *format, ...)
 			size = get_size(format, &i);
 			++i;
 			display = handle_print(format, &i, list, buffer,
-					flags, width, precision, size);
+flags, width, precision, size);
 			if (display == -1)
 				return (-1);
 			print1 += display;
@@ -48,9 +48,9 @@ int _printf(const char *format, ...)
 }
 
 /**
- * print_buffer - the contents of the buf
+ * print_buffer - Prints the contents of the buffer if it exist
  * @buffer: Array of chars
- * @buff_ind: represents the length.
+ * @buff_ind: Index at which to add next char, represents the length.
  */
 void print_buffer(char buffer[], int *buff_ind)
 {
