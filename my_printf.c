@@ -9,16 +9,16 @@ void print_buffer(char buffer[], int *buff_ind);
  */
 int _printf(const char *format, ...)
 {
-	int i, display = 0, print1 = 0;
 	int flags, width, precision, size, buff_ind = 0;
+	int i, display = 0, print1 = 0;
 	va_list list;
 	char buffer[BUFF_SIZE];
 
 	if (format == NULL)
 		return (-1);
 	va_start(list, format);
-
-	for (i = 0; format && format[i] != '\0'; i++)
+	i = 0;
+	while (format && format[i] != '\0')
 	{
 		if (format[i] != '%')
 		{
@@ -40,7 +40,7 @@ int _printf(const char *format, ...)
 			if (display == -1)
 				return (-1);
 			print1 += display;
-		}
+		} i++;
 	}
 	print_buffer(buffer, &buff_ind);
 	va_end(list);
@@ -48,7 +48,7 @@ int _printf(const char *format, ...)
 }
 
 /**
- * print_buffer - Prints the contents of the buf
+ * print_buffer - the contents of the buf
  * @buffer: Array of chars
  * @buff_ind: represents the length.
  */
