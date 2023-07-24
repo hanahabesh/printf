@@ -21,11 +21,11 @@ int precision, int size)
 	if (num1 == 0)
 		buffer[one--] = '0';
 	buffer[BUFF_SIZE - 1] = '\0';
-	for (; num1 > 0; i++)
+	while (num1 > 0)
 	{
 		buffer[one--] = (num1 % 10) + '0';
 		num1 /= 10;
-	}
+	} i++;
 	return (write_unsgnd(0, one, buffer, flags, width, precision, size));
 }
 
